@@ -8,16 +8,17 @@ module.exports = function(app) {
   });
 
   app.post("/api/friends", function(req, res) {
-
+    console.log(friendList);
     var friendScores = req.body.scores;
     var scoreArray = [];
     var match = 0;
     var friendNumber = 0;
 
     for (var i = 0; i < friendList.length; i++) {
+        console.log("testloop2");
         var scoresDifferences = 0;
         for (var a = 0; a< friendScores.length; a ++) {
-            scoresDifference += (Math.abs(parseInt(friendList[a].scores[a] = parseInt(friendScores[a]))));
+            scoresDifferences += (Math.abs(parseInt(friendList[i].scores[a]) - parseInt(friendScores[a])));
         }
 
         scoreArray.push(scoresDifferences)
@@ -31,6 +32,7 @@ module.exports = function(app) {
 
     var bestFriend = friendList[match];
     res.json(bestFriend);
+    console.log(bestFriend);
 
     friendList.push(req.body);
   });
