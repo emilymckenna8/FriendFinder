@@ -1,6 +1,6 @@
 var friendsSet = [
     {
-        name: "Antonio",
+        name: "Antonio Banderas",
         photo: "http://www.gstatic.com/tv/thumb/persons/5885/5885_v9_ba.jpg",
         scores: [
             1,

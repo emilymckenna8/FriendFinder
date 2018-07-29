@@ -212,13 +212,34 @@
     
     </div>
     <div>
-    <button type="submit" class="btn btn-primary submit" id="submitFriend" >Submit</button>
+    <button type="submit" class="btn btn-primary submit" id="submitFriend" data-toggle="modal" data-target="#myModal">Submit</button>
     </div>
     <footer class="footer">
         <div class="container">
           <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/emilymckenna8/FriendFinder">GitHub Repo</a></p>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Your New BFF!</h4>
+            </div>
+            <div class="modal-body">
+              <!-- name and photo here -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
 
   </div>
 
@@ -252,8 +273,16 @@
 
       console.log(newFriend);
 
-      $.post("/api/friends", newFriend);
+      $.post("/api/friends", newFriend, function(data) {
+        //inject BFF info into the modal
+        $(".modal-body").text(data.name);  
+      });
+      
+      $('.modal').modal();
+      
 
+
+      //remove existing values
       $(".chosen-select").val("");
       $("#name").val("");
       $("#photo").val("");
