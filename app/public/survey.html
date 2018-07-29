@@ -231,7 +231,8 @@
               <h4 class="modal-title">Your New BFF!</h4>
             </div>
             <div class="modal-body">
-              <!-- name and photo here -->
+              <h5 id= "bffname"></h5>
+              <img id = "bffpic">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -275,7 +276,9 @@
 
       $.post("/api/friends", newFriend, function(data) {
         //inject BFF info into the modal
-        $(".modal-body").text(data.name);  
+        $("#bffname").text(data.name);  
+        $("#bffpic").attr("src" , data.photo);
+
       });
       
       $('.modal').modal();
